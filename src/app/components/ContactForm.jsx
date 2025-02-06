@@ -29,6 +29,16 @@ export default function ContactForm() {
     setIsFormValid(senderName.trim() !== "" && email.trim() !== "" && message.trim() !== "");
   }, [formData]);
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      const timer = setTimeout(() => {
+        setIsSubmitSuccessful(false); // Reset the state to show the form again
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(timer); // Cleanup on unmount
+    }
+  }, [isSubmitSuccessful]);
+
   async function handleSubmit(event) {
     event.preventDefault();
     const form = new FormData(event.target);
