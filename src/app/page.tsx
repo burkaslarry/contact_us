@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ContactUs from "./components/ContactUs";
 
 export default function Home() {
